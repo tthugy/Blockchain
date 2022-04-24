@@ -1,16 +1,29 @@
 import React from 'react';
 
 function App() {
-  type SuperPrint = {
-    <T, M>(a: T[], b: M): T
+
+  type Player<T> = {
+    name: string
+    extraInfo: T
   }
 
-  const superPrint: SuperPrint = (arr) => arr[0]
+  type WonExtra = {
+    favFood: string
+  }
 
-  const a = superPrint([1, 2, 3, 4], "b")
-  const b = superPrint([true, false, true], "b")
-  const c = superPrint(["a", "b", "c"], "b")
-  const d = superPrint([1, 2, true, false, "hello"], "b")
+  type WonPlayer = Player<WonExtra>
+
+  const won: WonPlayer = {
+    name: "wonseok",
+    extraInfo: {
+      favFood: "meat"
+    }
+  }
+
+  const lynn: Player<null> = {
+    name: "lynn",
+    extraInfo: null
+  }
 
   return (
     <div>
