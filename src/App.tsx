@@ -2,32 +2,29 @@ import React from 'react';
 
 function App() {
 
-  type Player<T> = {
-    name: string
-    extraInfo: T
-  }
-
-  type WonExtra = {
-    favFood: string
-  }
-
-  type WonPlayer = Player<WonExtra>
-
-  const won: WonPlayer = {
-    name: "wonseok",
-    extraInfo: {
-      favFood: "meat"
+  abstract class User {
+    constructor(
+      protected firstName: string,
+      protected lastName: string,
+      protected nickname: string
+    ){}
+    abstract getNickName():void
+    getFullName(){
+      return `${this.firstName} ${this.lastName}`
     }
   }
-
-  const lynn: Player<null> = {
-    name: "lynn",
-    extraInfo: null
+  class Player extends User {
+    getNickName(): void {
+      console.log(this.nickname)
+    }
   }
+  const won = new Player("Wonseok", "Choi", "tthugy");
+
+  const name = won.getFullName();
 
   return (
     <div>
-      blockchain
+      {name}
     </div>
   );
 }
