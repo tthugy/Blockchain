@@ -2,19 +2,22 @@ import React from 'react';
 
 function App() {
 
-  type Team = "red" | "blue" | "yellow"
-  type Health = 1 | 5 | 10
-
-  type Player = {
-    nickname: string,
-    team: Team,
-    health: Health
+  abstract class User {
+    constructor(
+      protected firstName: string,
+      protected lastName: string
+    ){}
+    abstract sayHi(name: string): string
+    abstract fullName(): string
   }
-  
-  const won : Player = {
-    nickname: "wonseok",
-    team: "blue",
-    health: 10
+
+  class Player extends User {
+    fullName(){
+      return `${this.firstName} ${this.lastName}`
+    }
+    sayHi(name: string){
+      return `Hello ${name}. My name is ${this.fullName()}`
+    }
   }
 
   return (
