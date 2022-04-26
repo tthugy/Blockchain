@@ -2,38 +2,20 @@ import React from 'react';
 
 function App() {
 
-  type Words = {
-    [key: string]: string
+  type Team = "red" | "blue" | "yellow"
+  type Health = 1 | 5 | 10
+
+  type Player = {
+    nickname: string,
+    team: Team,
+    health: Health
   }
-
-  class Dict {
-    private words: Words
-    constructor(){
-      this.words = {}
-    }
-    add(word: Word){
-      if(this.words[word.term] === undefined){
-        this.words[word.term] = word.def;
-      }
-    }
-    def(term: string){
-      return this.words[term]
-    }
+  
+  const won : Player = {
+    nickname: "wonseok",
+    team: "blue",
+    health: 10
   }
-
-  class Word {
-    constructor(
-      public term: string,
-      public def: string
-    ) {}
-  }
-
-  const kimchi = new Word("kimchi", "한국의 음식");
-
-  const dict = new Dict()
-
-  dict.add(kimchi);
-  dict.def("kimchi");
 
   return (
     <div>
