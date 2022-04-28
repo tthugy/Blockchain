@@ -1,24 +1,25 @@
+import { clear } from 'console';
 import React from 'react';
 
 function App() {
 
-  interface User {
-    firstName: string,
-    lastName: string,
-    sayHi(name: string): string
-    fullName(): string
+  interface SStorage<T> {
+    [key: string]: T
   }
-
-  class Player implements User {
-    constructor(
-      public firstName: string,
-      public lastName: string
-    ){}
-    fullName(){
-      return `${this.firstName} ${this.lastName}`
+  class LocalStorage<T> {
+    private storage: SStorage<T> = {
+    set(key: string, value: T){
+      this.storage[key] = value;
     }
-    sayHi(name: string){
-      return `Hello ${name}. My name is ${this.fullName()}`
+    remove(key: string){
+      delete this.storage[key]
+    }
+    get(key: string): T {
+      return this.storage[key]
+    }
+    clear(){
+      this.storage = {}
+    }
     }
   }
 
