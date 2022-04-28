@@ -23,6 +23,16 @@ function App() {
     }
   }
 
+  const stringStorage = new LocalStorage<string>()
+
+  stringStorage.get("key")
+  stringStorage.set("hello", "how are you")
+
+  const booleanStorage = new LocalStorage<boolean>();
+
+  booleanStorage.get("xxx")
+  booleanStorage.get("hello", true)
+
   return (
     <div>
 
